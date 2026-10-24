@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Decision Tool | PRAYNOVA AI</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fc;
+      color: #152642;
+    }
+
+    header {
+      background: white;
+      padding: 20px 8%;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    header a {
+      color: #1557d5;
+      font-size: 21px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    main {
+      width: min(760px, 92%);
+      margin: 48px auto;
+    }
+
+    .label {
+      color: #1557d5;
+      font-weight: bold;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+    }
+
+    h1 { font-size: 38px; margin: 12px 0; }
+
+    .intro { color: #64748b; line-height: 1.7; }
+
+    .panel {
+      margin-top: 28px;
+      background: white;
+      padding: 30px;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px #17345a0b;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 20px 0 8px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      font: inherit;
+      background: white;
+    }
+
+    textarea { min-height: 95px; resize: vertical; }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 15px;
+      border: 0;
+      border-radius: 7px;
+      background: #1557d5;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover { background: #1045ad; }
+
+    #report {
+      display: none;
+      margin-top: 25px;
+      padding: 24px;
+      background: #eef5ff;
+      border-radius: 10px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    #report h2 { margin-top: 0; }
+
+    footer {
+      text-align: center;
+      color: #64748b;
+      padding: 25px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 500px) {
+      h1 { font-size: 30px; }
+      .panel { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">PRAYNOVA AI</a>
+</header>
+
+<main>
+  <div class="label">PRAYNOVA DECISION LAB</div>
+  <h1>Make Your Next Move Smarter.</h1>
+  <p class="intro">
+    Describe your business idea, budget and available time.
+    Get a structured starting report to help you plan your next steps.
+  </p>
+
+  <div class="panel">
+    <form id="decisionForm">
+      <label for="idea">What business do you want to explore?</label>
+      <textarea id="idea" placeholder="Example: Start a digital services company in my town" required></textarea>
+
+      <label for="budget">Your starting budget (₹)</label>
+      <input id="budget" type="number" min="1" step="1" placeholder="Example: 1500" required>
+
+      <label for="time">Time available per day</label>
+      <select id="time" required>
+        <option value="">Select available time</option>
+        <option>Less than 2 hours</option>
+        <option>2–5 hours</option>
+        <option>More than 5 hours</option>
+      </select>
+
+      <label for="goal">Your main goal</label>
+      <select id="goal" required>
+        <option value="">Choose your goal</option>
+        <option>Earn my first income</option>
+        <option>Build a long-term company</option>
+        <option>Solve a local community problem</option>
+        <option>Test a new business idea</option>
+      </select>
+
+      <button type="submit">Generate My Starting Report →</button>
+    </form>
+
+    <div id="report" aria-live="polite"></div>
+  </div>
+</main>
+
+<footer>© 2026 PRAYNOVA AI · Decision support for better planning</footer>
+
+<script>
+  document.getElementById("decisionForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const idea = document.getElementById("idea").value.trim();
+    const budget = Number(document.getElementById("budget").value);
+    const time = document.getElementById("time").value;
+    const goal = document.getElementById("goal").value;
+    const report = document.getElementById("report");
+
+    if (!idea || !Number.isFinite(budget) || budget <= 0 || !time || !goal) {
+      return;
+    }
+
+    report.replaceChildren();
+
+    function addHeading(text) {
+      const heading = document.createElement("h2");
+      heading.textContent = text;
+      report.appendChild(heading);
+    }
+
+    function addLine(label, value) {
+      const paragraph = document.createElement("p");
+      const strong = document.createElement("strong");
+      strong.textContent = label + ": ";
+      paragraph.append(strong, document.createTextNode(value));
+      report.appendChild(paragraph);
+    }
+
+    addHeading("Your Business Starting Report");
+    addLine("Business idea", idea);
+    addLine("Starting budget", "₹" + budget.toLocaleString("en-IN"));
+    addLine("Available time", time);
+    addLine("Main goal", goal);
+
+    addHeading("Recommended first steps");
+
+    const steps = [
+      "Identify the specific customer who needs this solution.",
+      "Speak with at least five potential customers before spending money.",
+      "List essential costs and separate them from optional expenses.",
+      "Test the smallest useful version of your idea before investing more."
+    ];
+
+    const list = document.createElement("ol");
+    steps.forEach(function(step) {
+      const item = document.createElement("li");
+      item.textContent = step;
+      list.appendChild(item);
+    });
+    report.appendChild(list);
+
+    addHeading("Budget and risk check");
+    addLine("Initial approach", budget < 5000
+      ? "Start with customer research and a low-cost test. Avoid unnecessary purchases."
+      : "Create a basic cost plan and reserve part of the budget for unexpected expenses.");
+    addLine("Important", "This is a preliminary planning template, not an AI-generated market analysis or a guarantee of profit. Validate demand and costs before investing.");
+
+    report.style.display = "block";
+    report.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+</script>
+
+</body>
+</html>
