@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PRAYNOVA AI builds intelligent solutions for businesses and better decision-making.">
-  <title>PRAYNOVA AI | Intelligence for Better Decisions</title>
+  <meta name="description" content="PRAYNOVA AI explores intelligent technology, business analytics and financial decision tools.">
+  <title>PRAYNOVA AI — Think Beyond Data</title>
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, sans-serif;
       color: #12213a;
-      background: #ffffff;
+      background: #fff;
       line-height: 1.6;
     }
 
@@ -24,160 +27,227 @@
     }
 
     .logo { font-size: 23px; font-weight: 800; color: #1456d9; }
+    .logo span { color: #12213a; }
+
+    nav { display: flex; gap: 25px; }
     nav a {
-      margin-left: 24px;
       text-decoration: none;
       color: #334155;
       font-size: 14px;
     }
+    nav a:hover { color: #1456d9; }
 
     .hero {
+      padding: 110px 8% 100px;
+      background: radial-gradient(ellipse at top right, #dceaff, #f5f8ff 45%, #fff 80%);
       text-align: center;
-      padding: 100px 20px 90px;
-      background: linear-gradient(180deg, #f0f6ff, #ffffff);
     }
 
     .tag {
+      display: inline-block;
       color: #1456d9;
+      background: #e6efff;
+      padding: 7px 14px;
+      border-radius: 30px;
+      font-size: 12px;
       font-weight: bold;
-      font-size: 13px;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
     }
 
     h1 {
-      max-width: 850px;
-      margin: 20px auto;
-      font-size: clamp(38px, 6vw, 66px);
-      line-height: 1.12;
+      max-width: 900px;
+      margin: 25px auto 18px;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -2px;
     }
 
     h1 span { color: #1456d9; }
 
     .hero p {
-      max-width: 650px;
-      margin: 0 auto 30px;
+      max-width: 670px;
+      margin: 0 auto 32px;
       color: #64748b;
       font-size: 18px;
     }
 
     .button {
       display: inline-block;
+      padding: 14px 24px;
+      border-radius: 7px;
       background: #1456d9;
       color: white;
-      padding: 14px 25px;
-      border-radius: 7px;
-      text-decoration: none;
       font-weight: bold;
+      text-decoration: none;
+      transition: background .2s;
     }
 
-    section { padding: 65px 8%; text-align: center; }
-    h2 { font-size: 32px; margin-bottom: 12px; }
-    .intro { color: #64748b; margin-bottom: 35px; }
+    .button:hover { background: #0d3fa8; }
+
+    .secondary {
+      background: white;
+      color: #1456d9;
+      border: 1px solid #cbdaf5;
+      margin-left: 10px;
+    }
+
+    .secondary:hover { background: #edf4ff; }
+
+    section { padding: 80px 8%; text-align: center; }
+    h2 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 12px; }
+    .intro { color: #64748b; max-width: 650px; margin: 0 auto 40px; }
 
     .services {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
+      gap: 24px;
       text-align: left;
     }
 
     .service {
-      padding: 27px;
+      padding: 30px;
       border: 1px solid #e2e8f0;
-      border-radius: 12px;
+      border-radius: 14px;
       background: white;
+      transition: transform .2s, box-shadow .2s;
     }
 
-    .service h3 { margin: 12px 0; }
-    .service p { color: #64748b; font-size: 15px; }
-    .symbol { font-size: 27px; }
+    .service:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px #142c5010;
+    }
 
-    .about { background: #f5f8fd; }
+    .symbol {
+      display: inline-grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #eaf1ff;
+      color: #1456d9;
+      font-size: 24px;
+    }
+
+    .service h3 { margin: 18px 0 10px; font-size: 20px; }
+    .service p { color: #64748b; font-size: 15px; }
+
+    .vision { background: #f5f8fd; }
+    .vision-content { max-width: 760px; margin: auto; }
+
+    .contact { background: #10264c; color: white; }
+    .contact p { color: #d0daeb; margin: 12px auto 25px; }
+
     footer {
-      padding: 25px;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 25px 8%;
       color: #64748b;
       border-top: 1px solid #e8edf5;
-      font-size: 14px;
+      font-size: 13px;
     }
 
-    @media (max-width: 700px) {
-      header { padding: 18px 5%; flex-wrap: wrap; gap: 12px; }
-      nav a { margin-left: 10px; }
-      .hero { padding: 70px 18px; }
+    @media (max-width: 760px) {
+      header { padding: 18px 5%; flex-wrap: wrap; gap: 15px; }
+      nav { gap: 15px; flex-wrap: wrap; }
+      .hero { padding: 75px 6%; }
+      section { padding: 60px 6%; }
       .services { grid-template-columns: 1fr; }
-      section { padding: 48px 6%; }
+      .secondary { margin: 12px 0 0; }
     }
   </style>
 </head>
-<body>
 
+<body>
   <header>
-    <div class="logo">PRAYNOVA AI</div>
+    <a class="logo" href="#home" style="text-decoration:none">
+      PRAYNOVA <span>AI</span>
+    </a>
     <nav>
       <a href="#home">Home</a>
-      <a href="#services">Solutions</a>
-      <a href="#about">About</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#vision">Our Vision</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="tag">INTELLIGENCE. INNOVATION. IMPACT.</div>
-      <h1>Turn Complex Problems Into <span>Clear Decisions.</span></h1>
+      <div class="tag">INTELLIGENCE FOR A BETTER FUTURE</div>
+      <h1>Think Beyond Data.<br><span>Build What Matters.</span></h1>
       <p>
         Exploring intelligent AI, business analytics and financial
-        solutions to help people and businesses move forward.
+        tools that turn complex information into clearer decisions.
       </p>
-      <a class="button" href="#services">Explore Our Solutions →</a>
+      <a class="button" href="#solutions">Explore Our Solutions →</a>
+      <a class="button secondary" href="#vision">Discover Our Vision</a>
     </section>
 
-    <section id="services">
-      <h2>What We're Building</h2>
-      <p class="intro">Practical technology for smarter decisions.</p>
+    <section id="solutions">
+      <h2>Technology With Purpose</h2>
+      <p class="intro">
+        Our planned solutions focus on practical problems,
+        useful insights and smarter ways to work.
+      </p>
 
       <div class="services">
         <article class="service">
           <div class="symbol">✦</div>
-          <h3>AI Solutions</h3>
-          <p>Intelligent tools designed to simplify everyday tasks and support better decisions.</p>
+          <h3>AI Innovation</h3>
+          <p>
+            Explore intelligent digital tools that can simplify
+            tasks, organize information and support decision-making.
+          </p>
         </article>
 
         <article class="service">
           <div class="symbol">▥</div>
           <h3>Business Analytics</h3>
-          <p>Turn business data into useful insights, reports and growth opportunities.</p>
+          <p>
+            Transform business data into meaningful reports,
+            performance insights and opportunities for improvement.
+          </p>
         </article>
 
         <article class="service">
           <div class="symbol">↗</div>
           <h3>Financial Intelligence</h3>
-          <p>Explore financial analysis, planning tools and data-driven business insights.</p>
+          <p>
+            Explore financial analysis and planning tools
+            to help people understand business performance.
+          </p>
         </article>
       </div>
     </section>
 
-    <section class="about" id="about">
-      <h2>Built for a Smarter Future</h2>
-      <p class="intro">
-        PRAYNOVA AI is an emerging venture focused on making
-        technology and data more useful for businesses and people.
+    <section class="vision" id="vision">
+      <div class="vision-content">
+        <h2>Our Vision</h2>
+        <p class="intro">
+          We envision a future where useful technology and
+          accessible data help businesses and communities make
+          more informed decisions. PRAYNOVA AI is at the beginning
+          of that journey, building one practical solution at a time.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Let's Build the Future</h2>
+      <p>
+        Have an idea, a business challenge or a solution worth exploring?
       </p>
+      <a class="button" href="mailto:hello@praynova.ai"
+         style="background:white;color:#1456d9">
+        Get in Touch →
+      </a>
     </section>
   </main>
-<section id="contact" style="background:#ffffff;">
-  <h2>Let's Connect</h2>
-  <p class="intro">
-    Have a business challenge or an idea to explore?
-    We'd love to hear from you.
-  </p>
-  <a class="button" href="mailto:hello@praynova.ai">
-    Contact PRAYNOVA AI →
-  </a>
-</section>
-  <footer>
-    © 2026 PRAYNOVA AI. All rights reserved.
-  </footer>
 
+  <footer>
+    <span>© 2026 PRAYNOVA AI. All rights reserved.</span>
+    <span>Intelligence. Innovation. Impact.</span>
+  </footer>
 </body>
 </html>
